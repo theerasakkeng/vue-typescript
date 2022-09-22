@@ -1,7 +1,7 @@
 import { h, render } from "vue";
-import LoadingVue from "@/components/custom-loading/custom-loading.vue";
+import LoadingVue from "../components/custom-loading/custom-loading.vue";
 
-const createComponent = (component: any, props: any, parentContainer: any) => {
+const createComponent = (component: any, props: any, parentContainer: Element) => {
     const vnode = h(component, props);
     const container = document.createElement("div");
     parentContainer.appendChild(container);
@@ -10,7 +10,7 @@ const createComponent = (component: any, props: any, parentContainer: any) => {
     return vnode.component;
 }
 
-const removeElement = (el: any) => {
+const removeElement = (el: Element) => {
     if (typeof el.remove !== "undefined") {
         el.remove();
     } else {
@@ -19,10 +19,10 @@ const removeElement = (el: any) => {
 }
 export default LoadingVue;
 
-export const useLoading = (globalProps: object = {}, globalSlots: object = {}) => {
+export const useLoading = (globalProps: any = {}, globalSlots: any = {}) => {
     let instance: any = null;
     const loading: object = {
-        show(props = globalProps, slots = globalSlots) {
+        show(props: any = globalProps, slots: any = globalSlots) {
             const forceProps: object = {
                 programmati: true,
                 lockScroll: true,
@@ -38,11 +38,11 @@ export const useLoading = (globalProps: object = {}, globalSlots: object = {}) =
             instance = createComponent(LoadingVue, propsData, container);
             const mergedSlots = Object.assign({}, globalSlots, slots);
             Object.keys(mergedSlots).map((name) => {
-                console.log(name);
                 if (instance != null) {
                     instance.slots[name] = mergedSlots[name];
                 }
             });
+            console.log(instance)
         },
         hide() {
             if (instance != null) {

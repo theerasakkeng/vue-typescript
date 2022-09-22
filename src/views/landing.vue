@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div>landing</div>
 </template>
 <script setup lang="ts">
 import { useLoading } from "../plugin/custom-loading-plugin";
@@ -8,9 +8,9 @@ const loader: any = useLoading();
 
 const check = () => {
   loader.show();
-  // setTimeout(() => {
-  //   loader.hide();
-  // }, 3000);
+  setTimeout(() => {
+    loader.hide();
+  }, 3000);
 };
 check();
 </script>

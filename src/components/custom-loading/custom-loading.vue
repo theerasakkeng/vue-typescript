@@ -1,5 +1,5 @@
 <template>
-  <transition ref="root">
+  <transition ref="root" name="transition">
     <div
       tabindex="0"
       class="loading-overlay is-active"
