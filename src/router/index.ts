@@ -1,11 +1,12 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-const routes:any = [
+const routes: any = [
   {
     path: "/",
-    redirect: {
-      name: "landing",
-    },
+    component: () => import("../views/main/main.vue"),
+    // redirect: {
+    //   name: "landing",
+    // },
   },
   {
     path: "/landing",
@@ -25,13 +26,51 @@ const routes:any = [
       require_role: [],
     },
   },
+  // {
+  //   path: "/main",
+  //   name: "main",
+  //   component: () => import("@/views/main/index.vue"),
+  //   redirect: {
+  //     name: "page-main",
+  //   },
+  //   meta: {
+  //     top: {
+  //       active: false,
+  //       back: null,
+  //       title: null,
+  //     },
+  //     bottom: {
+  //       active: false,
+  //       current: null,
+  //     },
+  //     auth_route: true,
+  //     require_role: [],
+  //   },
+  //   children: [
+  //     {
+  //       path: "page-main",
+  //       name: "page-main",
+  //       component: () => import("@/views/main/main.vue"),
+  //       meta: {
+  //         top: {
+  //           active: true,
+  //           back: null,
+  //           title: null,
+  //         },
+  //         bottom: {
+  //           active: false,
+  //           current: "",
+  //         },
+  //         auth_route: false,
+  //         require_role: [],
+  //       },
+  //     },
+  //   ],
+  // },
   {
-    path: "/main",
-    name: "main",
-    component: () => import("@/views/main/index.vue"),
-    redirect: {
-      name: "page-main",
-    },
+    path: "/login",
+    name: "login",
+    component: () => import("@/views/login/login.vue"),
     meta: {
       top: {
         active: false,
@@ -45,27 +84,7 @@ const routes:any = [
       auth_route: true,
       require_role: [],
     },
-    children: [
-      {
-        path: "page-main",
-        name: "page-main",
-        component: () => import("@/views/main/main.vue"),
-        meta: {
-          top: {
-            active: true,
-            back: null,
-            title: null,
-          },
-          bottom: {
-            active: false,
-            current: "",
-          },
-          auth_route: false,
-          require_role: [],
-        },
-      },
-    ],
-  },
+  }
 ];
 
 const router = createRouter({
