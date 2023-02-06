@@ -1,5 +1,5 @@
 import { h, render } from "vue";
-import LoadingVue from "../components/custom-loading/custom-loading.vue";
+import LoadingVue from "@/components/custom-loading/custom-loading.vue";
 
 const createComponent = (component: any, props: any, parentContainer: Element) => {
     const vnode = h(component, props);
@@ -42,7 +42,6 @@ export const useLoading = (globalProps: any = {}, globalSlots: any = {}) => {
                     instance.slots[name] = mergedSlots[name];
                 }
             });
-            console.log(instance)
         },
         hide() {
             if (instance != null) {
